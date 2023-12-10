@@ -1,0 +1,47 @@
+﻿@page "/invoices"
+@inject HttpClient Http
+
+<PageTitle>Clients</PageTitle>
+
+<h1>Invoices</h1>
+
+
+@if (invoices == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cost</th>
+                <th>Status</th>
+                 <th>Action</th>
+                  <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invoice in invoices)
+            {
+                <tr>
+                    <td>@invoice.Id</td>
+                    <td>@invoice.Cost</td>
+                    @if (invoice.IsPaid == true)
+                    {
+                        <td style="color:white;background-color:green">Paid By @invoice.PaymentType</td>
+                    }
+                    else
+                    {
+                        <td style="color:white;background-color:red">UnPaid</td>
+                        <td><a @onclick="(e)=>payWithCard(invoice.Id)" class="btn btn-primary">Pay using Card</a></td>
+                        <td><a @onclick="(e)=>payWithWallet(invoice.Id)" class="btn btn-primary">Pay using Wallet</a></td>
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

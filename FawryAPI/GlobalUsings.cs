@@ -1,0 +1,13 @@
+﻿global using FawryAPI.interfaces;
+global using FawryAPI.Models;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text.Json;
+global using System.Net;
+global using System.Text;
+global using XAct;
+global using XSystem.Security.Cryptography;
+global using FawryAPI.Settings.Configurations;
+global using FawryAPI.Middlewares;

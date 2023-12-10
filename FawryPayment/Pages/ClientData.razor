@@ -1,0 +1,36 @@
+﻿@page "/clients"
+@inject HttpClient Http
+
+<PageTitle>Clients</PageTitle>
+
+<h1>Clients</h1>
+
+
+@if (Clients == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Clients)
+            {
+                <tr>
+                    <td>@client.Id</td>
+                    <td>@client.Name</td>
+                    <td>@client.Mobile</td>
+                    <td>@client.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

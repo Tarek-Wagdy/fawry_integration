@@ -20,7 +20,7 @@ namespace FawryAPI.Controllers
             try
             {
                 var ReturnObj= paymentService.Pay(new PayCardReq(10, 2025, 7, 232));
-                markInvoiceAsPaid(invoiceId);
+                markInvoiceAsPaid(invoiceId,"Card");
                 return ReturnObj;
                 
             }
@@ -39,7 +39,7 @@ namespace FawryAPI.Controllers
             try
             {
                 var ReturnObj =paymentService.Pay(new PayWalletReq("07775000"));
-                markInvoiceAsPaid(invoiceId);
+                markInvoiceAsPaid(invoiceId,"Wallet");
                 return ReturnObj;
 
             }
@@ -49,10 +49,11 @@ namespace FawryAPI.Controllers
             }
         }
 
-        private void markInvoiceAsPaid(int invoiceId)
+        private void markInvoiceAsPaid(int invoiceId,string PaymentType)
         {
             Invoice invoice = _applicationContext.invoices.FirstOrDefault(i => i.Id == invoiceId);
             invoice.IsPaid = true;
+            invoice.PaymentType = PaymentType;
             _applicationContext.SaveChanges();
         }
     }

@@ -4,9 +4,7 @@ namespace FawryAPI.Repositories
 {
     public class FawryWalletPaymentRepository:IFawryWalletPayment
     {
-
-
-        private static object PostWalletJson(string uri, BasePayReq payWalletReq)
+        private  object PostWalletJson(string uri, BasePayReq payWalletReq)
         {
             dynamic response;
             string postData = JsonConvert.SerializeObject(payWalletReq);
